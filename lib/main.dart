@@ -150,12 +150,16 @@ class _MyHomePageState extends State<MyHomePage> {
                ,)
 
        ) ,
-
+       SliverToBoxAdapter(
+         child: Divider(
+           color: Colors.white,
+         ),
+       ),
        SliverToBoxAdapter(
          child :
              Container(
                decoration: BoxDecoration(
-                 border : Border.all(color: Colors.indigo[300]) ,
+                 border : Border.all(color: Colors.purpleAccent[100g]) ,
                )
                ,
              child : Padding(
