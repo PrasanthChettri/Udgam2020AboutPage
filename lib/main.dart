@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'mapasset.dart' ;
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.light(
+
       ) ,
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -165,12 +167,12 @@ class _MyHomePageState extends State<MyHomePage> {
                      InkWell(
                        splashColor: Colors.blue,
                      child : MaterialButton(
-                       shape: Border.all(color: Colors.purpleAccent) ,
+                       shape : StadiumBorder() ,
                        highlightElevation: 0,
                        elevation: 20,
-                       color: Colors.white,
+                       color: Colors.purpleAccent[100],
                 child :
-                     Text("SEE THE LOCATION") ,
+                     Text("SEE THE LOCATION" , style:TextStyle(color: Colors.white , fontStyle: FontStyle.italic),) ,
                  onPressed: (){
                        Navigator.push(
                      context,
@@ -184,13 +186,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   splashColor: Colors.purpleAccent ,
                   child :
                     MaterialButton(
-                      shape : Border.all(
-                        color: Colors.indigo ,
-                      ) ,
+                      shape : StadiumBorder() ,
                       highlightElevation: 0,
                       elevation: 20,
-                      color: Colors.white,
-                       child: Text("GO TO THE WEBSITE" ),
+                      color: Colors.indigo[300],
+                       child: Text("GO TO THE WEBSITE"  , style:TextStyle(color: Colors.white , fontStyle: FontStyle.italic), ),
                       onPressed: (){
                         _launchURL() ;
                       },
