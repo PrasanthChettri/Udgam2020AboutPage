@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
          SliverAppBar(
            title: Text("ABOUT US") ,
            flexibleSpace: Image.asset('assets/Kanchenjunga_India.jpg'),
-           pinned: true,
+           floating: true,
            expandedHeight: 265 ,
            centerTitle: true,
            backgroundColor: Colors.white70,
