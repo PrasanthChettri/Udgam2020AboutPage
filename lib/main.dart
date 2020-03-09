@@ -75,9 +75,9 @@ class _MyHomePageState extends State<MyHomePage> {
      body: CustomScrollView(
        slivers: <Widget>[
          SliverAppBar(
-           title: Text("ABOUT US") ,
+           title: Text("ABOUT UStg") ,
            flexibleSpace: Image.asset('assets/Kanchenjunga_India.jpg'),
-           floating: false,
+           pinned: true,
            expandedHeight: 265 ,
            centerTitle: true,
            backgroundColor: Colors.white70,
