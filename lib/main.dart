@@ -159,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
          child :
              Container(
                decoration: BoxDecoration(
-                 border : Border.all(color: Colors.purpleAccent[100g]) ,
+                 border : Border.all(color: Colors.grey[400]) ,
                )
                ,
              child : Padding(
