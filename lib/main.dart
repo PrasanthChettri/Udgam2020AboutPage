@@ -108,7 +108,8 @@ class _MyHomePageState extends State<MyHomePage> {
        slivers: <Widget>[
          SliverAppBar(
            title: Text("ABOUT US") ,
-           flexibleSpace: Image.asset('assets/Kanchenjunga_India.jpg'),
+           snap: false,
+           flexibleSpace: Image.asset('assets/Kanchenjunga_India.jpg' , fit : BoxFit.fill ,),
            floating: true,
            expandedHeight: 265 ,
            centerTitle: true,
