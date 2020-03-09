@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'mapasset.dart' ;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -65,7 +65,19 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+
 class _MyHomePageState extends State<MyHomePage> {
+  _launchURL() async {
+    const url = 'http://www.udgam.nitsikkim.ac.in/udgam20';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      Scaffold.of(context).showSnackBar(
+      SnackBar(
+          content: Text('Failed to Load!')
+      ) );
+    }
+  }
   var button_style = TextStyle(
     fontSize: 13 ,
     fontWeight: FontWeight.w100 ,
@@ -179,6 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.white,
                        child: Text("GO TO THE WEBSITE" ),
                       onPressed: (){
+                        _launchURL() ;
                       },
                      )
                 )
