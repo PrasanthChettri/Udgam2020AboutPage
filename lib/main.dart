@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'mapasset.dart' ;
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() => runApp(MyApp());
 var about_page = """
@@ -62,8 +66,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var button_style = TextStyle(
+    fontSize: 13 ,
+    fontWeight: FontWeight.w100 ,
+    color: Colors.purpleAccent[700]    ,
+  ) ;
   int _counter = 0;
+  Completer<GoogleMapController> _controller = Completer();
 
+  static const LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    _controller.complete(controller);
+  }
   void _incrementCounter() {
     setState(() {
    });
@@ -71,11 +86,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
    return Scaffold(
-     body: CustomScrollView(
+     body:
+     CustomScrollView(
        slivers: <Widget>[
          SliverAppBar(
-           title: Text("ABOUT UStg") ,
+           title: Text("ABOUT US") ,
            flexibleSpace: Image.asset('assets/Kanchenjunga_India.jpg'),
            pinned: true,
            expandedHeight: 265 ,
@@ -124,8 +141,68 @@ class _MyHomePageState extends State<MyHomePage> {
            child : Text(about_page) ,
          ) ,
        ) ,
-     ],
-   ),
-  ) ;
+         SliverToBoxAdapter(
+           child: SizedBox(height: 30),
+         ) ,
+    SliverToBoxAdapter(
+             child:
+                 Column(
+                   mainAxisSize: MainAxisSize.min,
+                   children : [
+                     InkWell(
+                       splashColor: Colors.blue,
+                     child : MaterialButton(
+                       shape: Border.all(color: Colors.purpleAccent) ,
+                       highlightElevation: 0,
+                       elevation: 20,
+                       color: Colors.white,
+                child :
+                     Text("SEE THE LOCATION") ,
+                 onPressed: (){
+                       Navigator.push(
+                     context,
+                     MaterialPageRoute(builder: (context) => mapasset()),
+                   );
+                     },
+                   ) ,
+                 ) ,
+
+                InkWell(
+                  splashColor: Colors.purpleAccent ,
+                  child :
+                    MaterialButton(
+                      shape : Border.all(
+                        color: Colors.indigo ,
+                      ) ,
+                      highlightElevation: 0,
+                      elevation: 20,
+                      color: Colors.white,
+                       child: Text("GO TO THE WEBSITE" ),
+                      onPressed: (){
+                      },
+                     )
+                )
+                ] ,
+                 ) ,
+    ) ,
+         SliverToBoxAdapter(
+           child: Container(
+             height: 50,
+             child: Align(
+               alignment: Alignment.bottomCenter,
+               child : Text("UDGAM2020\n@NITSIKKIM" ,
+                 style: TextStyle(
+                   fontSize: 12 ,
+                   fontWeight: FontWeight.w200,
+                   color:  Colors.grey ,
+                 ),
+               ) ,
+             ) ,
+           ),
+         )
+       ],
+       ) ,
+   );
   }
 }
+
